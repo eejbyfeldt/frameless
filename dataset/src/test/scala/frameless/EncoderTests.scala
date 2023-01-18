@@ -27,4 +27,8 @@ class EncoderTests extends TypedDatasetSuite with Matchers {
   test("It should encode java.time.Period") {
     implicitly[TypedEncoder[PeriodRow]]
   }
+
+  test("It should encode Set") {
+    implicitly[TypedEncoder[Set[Int]]]
+  }
 }

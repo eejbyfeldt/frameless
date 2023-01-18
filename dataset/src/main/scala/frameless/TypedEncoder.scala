@@ -324,7 +324,7 @@ object TypedEncoder {
       override def toString: String = s"arrayEncoder($jvmRepr)"
     }
 
-  implicit def collectionEncoder[C[X] <: Seq[X], T]
+  implicit def collectionEncoder[C[X] <: Iterable[X], T]
     (implicit
       i0: Lazy[RecordFieldEncoder[T]],
       i1: ClassTag[C[T]]): TypedEncoder[C[T]] = new TypedEncoder[C[T]] {
