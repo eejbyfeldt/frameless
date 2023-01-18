@@ -7,6 +7,8 @@ object EncoderTests {
   case class InstantRow(i: java.time.Instant)
   case class DurationRow(d: java.time.Duration)
   case class PeriodRow(p: java.time.Period)
+  case class ValueClass(d: Double) extends AnyVal
+  case class UsingTuple(v: (ValueClass, Double))
 }
 
 class EncoderTests extends TypedDatasetSuite with Matchers {
@@ -26,5 +28,13 @@ class EncoderTests extends TypedDatasetSuite with Matchers {
 
   test("It should encode java.time.Period") {
     implicitly[TypedEncoder[PeriodRow]]
+  }
+
+  test("It should encode Tuple2") {
+    implicitly[TypedEncoder[UsingTuple]]
+  }
+
+  test("It should encode Tuple5") {
+    implicitly[TypedEncoder[(Int, String, Double, Long, Byte)]]
   }
 }
